@@ -12,22 +12,21 @@ setupInterceptorsTo(axios);
 function App() {
   const router = createBrowserRouter(routerConfig);
 
-  // useEffect(() => {
-  //   console.log("rerendering...");
+  useEffect(() => {
+    console.log("rerendering...");
 
-  //   (async () => {
-  //     const res = await axios.post<APILoginResInterface>("/auth/login", {
-  //       email: "pyz@gmail.com",
-  //       password: "123456",
-  //     });
+    // (async () => {
+    //   const res = await axios.post<APILoginResInterface>("/auth/login", {
+    //     email: "pyz@gmail.com",
+    //     password: "123456",
+    //   });
 
-  //     if (res.data.status === "success") {
-  //       setToken({ j_token: res.data.token });
-  //     }
+    //   if (res.data.status === "success") {
+    //     setToken({ j_token: res.data.token });
+    //   }
 
-  //     console.log(await axios.get<APILoginResInterface>("/users"));
-  //   })();
-  // }, []);
+    // })();
+  }, []);
 
   return <RouterProvider router={router} />;
 }

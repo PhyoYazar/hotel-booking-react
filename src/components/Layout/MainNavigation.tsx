@@ -1,8 +1,7 @@
 import React from "react";
-import Header from "./Header";
 
 const MainNavigation = () => {
-  return <Header />;
+  return <div>Main Navigation</div>;
 };
 
 export default MainNavigation;

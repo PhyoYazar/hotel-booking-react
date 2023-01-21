@@ -1,12 +1,15 @@
+import type { RouteObject } from "react-router-dom";
+
 import PrivateLayout from "../components/Layout/PrivateLayout";
-import AllPostsPage from "../pages/all-posts";
+import RootLayout from "../components/Layout/RootLayout";
 import ErrorPage from "../pages/error";
 import privateRoutes from "./privateRoutes";
 import publicRoutes from "./publicRoutes";
 
-const routerConfig: any = [
+const routerConfig: RouteObject[] = [
   {
     path: "/",
+    element: <RootLayout />,
     errorElement: <ErrorPage />,
     children: [
       // PUBLIC ROUTES
