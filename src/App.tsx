@@ -1,50 +1,53 @@
+import { useEffect } from "react";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import AllPostsPage from "./pages/all-posts";
-import CreatePostPage from "./pages/create-post";
-import ErrorPage from "./pages/error";
-import MyPostsPage from "./pages/my-post";
-import RootLayout from "./pages/root-layout";
+import axios from "axios";
+
+import setupInterceptorsTo from "./controllers/axiosInterceptors";
+import routerConfig from "./router/routerConfig";
+import { getToken, setToken } from "./services/auth";
+import type { APILoginResInterface } from "./lib/interface";
+
+setupInterceptorsTo(axios);
 
 function App() {
-  const router = createBrowserRouter([
-    {
-      path: "/",
-      element: <RootLayout />,
-      errorElement: <ErrorPage />,
-      children: [
-        { index: true, element: <AllPostsPage /> },
-        {
-          path: "create-post",
-          element: <CreatePostPage />,
-        },
-        {
-          path: "my-posts",
-          element: <MyPostsPage />,
-          // loader: ({ request }) =>
-          //   fetch("/api/dashboard.json", {
-          //     signal: request.signal,
-          //   }),
-        },
-        {
-          path: "auth",
-          // element: <AuthLayout />,
-          children: [
-            {
-              path: "login",
-              // element: <Login />,
-              // loader: redirectIfUser,
-            },
-            {
-              path: "sign-up",
-              // action: logoutUser,
-            },
-          ],
-        },
-      ],
-    },
-  ]);
+  const router = createBrowserRouter(routerConfig);
+
+  // useEffect(() => {
+  //   console.log("rerendering...");
+
+  //   (async () => {
+  //     const res = await axios.post<APILoginResInterface>("/auth/login", {
+  //       email: "pyz@gmail.com",
+  //       password: "123456",
+  //     });
+
+  //     if (res.data.status === "success") {
+  //       setToken({ j_token: res.data.token });
+  //     }
+
+  //     console.log(await axios.get<APILoginResInterface>("/users"));
+  //   })();
+  // }, []);
 
   return <RouterProvider router={router} />;
 }
 
 export default App;
+
+// [
+//   {
+//     path: "/",
+//     errorElement: <ErrorPage />,
+//     children: [
+//       // PUBLIC ROUTES
+//       { path: "", element: <AllPostsPage /> },
+
+//       // PRIVATE ROUTES
+//       {
+//         path: "auth",
+//         element: <PrivateLayout />,
+//         children: [],
+//       },
+//     ],
+//   },
+// ];
