@@ -11,12 +11,18 @@ const RootLayout = () => {
 
   useEffect(() => {
     if (isInitialized) {
-      if (isAuthenticated) {
-        // if (!pathname.includes("/auth/"))
-        //   navigate("/", { replace: true });
-      } else {
-        const prevPath = pathname.includes("/auth/") ? pathname : undefined;
-        navigate("/", { replace: true, state: { path: prevPath } });
+      // if (isAuthenticated) {
+      // if (!pathname.includes("/auth/"))
+      //   navigate("/", { replace: true });
+      // } else {
+      //   const prevPath = pathname.includes("/auth/") ? pathname : undefined;
+      //   navigate("/", { replace: true, state: { path: prevPath } });
+      // }
+
+      if (!isAuthenticated) {
+        if (pathname.includes("/auth/")) {
+          navigate("/login");
+        }
       }
     }
   }, [isInitialized, isAuthenticated]);

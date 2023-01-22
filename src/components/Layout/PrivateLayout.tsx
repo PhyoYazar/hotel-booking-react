@@ -1,11 +1,15 @@
 import React from "react";
 import { Outlet } from "react-router-dom";
+import MainNavigation from "./MainNavigation";
 
 const PrivateLayout = () => {
   return (
     <>
-      <div>PrivateLayout</div>
-      <Outlet />
+      <MainNavigation />
+
+      <main className="container">
+        <Outlet />
+      </main>
     </>
   );
 };

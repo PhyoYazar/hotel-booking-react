@@ -32,21 +32,3 @@ function App() {
 }
 
 export default App;
-
-// [
-//   {
-//     path: "/",
-//     errorElement: <ErrorPage />,
-//     children: [
-//       // PUBLIC ROUTES
-//       { path: "", element: <AllPostsPage /> },
-
-//       // PRIVATE ROUTES
-//       {
-//         path: "auth",
-//         element: <PrivateLayout />,
-//         children: [],
-//       },
-//     ],
-//   },
-// ];

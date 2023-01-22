@@ -1,5 +1,6 @@
 import HotelDetailPage from "../pages/hotel-detail";
 import MyBookingsPage from "../pages/my-bookings";
+import Profile from "../pages/profile";
 
 export default [
   {
@@ -14,8 +15,8 @@ export default [
     //     signal: request.signal,
     //   }),
   },
-  // {
-  //   path: "profile",
-  //   element: <Profile />,
-  // },
+  {
+    path: "profile",
+    element: <Profile />,
+  },
 ];

@@ -2,19 +2,21 @@
 @tailwind components;
 @tailwind utilities;
 
-*,
-*::after,
-*::before {
-  padding: 0;
-  margin: 0;
-
-  box-sizing: inherit;
+@layer base {
+  /* ul,
+     ol {
+      list-style: none;
+    } */
 }
 
-html {
-  box-sizing: border-box;
+@layer components {
+  .flex-between {
+    @apply flex items-center justify-between;
+  }
 }
 
-body {
-  font-family: sans-serif;
+@layer utilities {
+  /* .test {
+        padding: 5px 10px;
+      } */
 }
