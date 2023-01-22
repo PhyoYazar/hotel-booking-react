@@ -6,7 +6,7 @@ const PublicLayout = () => {
     <>
       <MainNavigation />
 
-      <main className="container">
+      <main className="container flex-center">
         <Outlet />
       </main>
     </>

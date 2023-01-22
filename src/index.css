@@ -13,6 +13,10 @@
   .flex-between {
     @apply flex items-center justify-between;
   }
+
+  .flex-center {
+    @apply flex items-center justify-center;
+  }
 }
 
 @layer utilities {

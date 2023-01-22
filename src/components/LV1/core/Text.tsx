@@ -1,5 +1,5 @@
-import styled, { css } from 'styled-components';
-import { fontSize, fontWeight } from '../style';
+import styled, { css } from "styled-components";
+import { fontSize, fontWeight } from "../style";
 
 interface TextInterface {
   color?: string;
@@ -20,8 +20,8 @@ export const Text = styled.p<TextInterface>`
   font-weight: ${fontWeight.md};
 
   /* transition: color ${({ theme }) => theme.transition}; */
-  color: ${({ theme, color }) =>
-    color ? color : theme.colorMode.primarycolor};
+
+  color: ${({ theme, color }) => (color ? color : theme.colors.neutral800)};
   ${({ size }) =>
     size &&
     css`
@@ -45,7 +45,7 @@ export const Title = styled(Text)<TextInterface>`
   font-size: ${fontSize.md}px;
   font-weight: ${fontWeight.lg};
 
-  margin-bottom: ${(props) => (props.mb ? props.mb : '15')}px;
+  margin-bottom: ${(props) => (props.mb ? props.mb : "15")}px;
   ${({ size }) =>
     size &&
     css`

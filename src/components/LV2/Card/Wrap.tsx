@@ -3,7 +3,7 @@ type ChildrenType = {
 };
 
 const Wrap = ({ children }: ChildrenType) => {
-  return <div className="shadow-sm rounded-md p-5">{children}</div>;
+  return <div className="shadow-md rounded-md overflow-hidden">{children}</div>;
 };
 
 export default Wrap;
