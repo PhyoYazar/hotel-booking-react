@@ -1,6 +1,8 @@
-import styled from 'styled-components';
+import styled from "styled-components";
 
 interface StyledRotateInterface {
+  width?: number;
+  height?: number;
   isRotateX?: boolean;
 }
 
@@ -11,9 +13,14 @@ interface Props extends StyledRotateInterface {
   // backData: JSX.Element;
 }
 
-const RotateCard = ({ isRotateX, frontData, backData }: Props) => {
+const RotateCard = ({
+  isRotateX,
+  frontData,
+  backData,
+  ...styleData
+}: Props) => {
   return (
-    <StyledRotateCard isRotateX={isRotateX}>
+    <StyledRotateCard isRotateX={isRotateX} {...styleData}>
       <div className="card front">{frontData()}</div>
 
       <div className="card back">{backData()}</div>
@@ -24,8 +31,8 @@ const RotateCard = ({ isRotateX, frontData, backData }: Props) => {
 export default RotateCard;
 
 const StyledRotateCard = styled.div<StyledRotateInterface>`
-  width: 250px;
-  height: 400px;
+  width: ${({ width }) => (width ? width : "250")}px;
+  height: ${({ height }) => (height ? height : "400")}px;
   cursor: pointer;
 
   position: relative;
@@ -34,7 +41,7 @@ const StyledRotateCard = styled.div<StyledRotateInterface>`
 
   & .card {
     width: 100%;
-    height: 400px;
+    height: ${({ height }) => (height ? height : "400")}px;
     position: absolute;
     top: 0;
     left: 0;
@@ -48,7 +55,7 @@ const StyledRotateCard = styled.div<StyledRotateInterface>`
   & .back {
     background-color: ${({ theme }) => theme.colors.rose200};
     transform: ${({ isRotateX }) =>
-      isRotateX ? 'rotateX(180deg)' : 'rotateY(180deg)'};
+      isRotateX ? "rotateX(180deg)" : "rotateY(180deg)"};
   }
 
   & .front {
@@ -57,10 +64,10 @@ const StyledRotateCard = styled.div<StyledRotateInterface>`
 
   &:hover .front {
     transform: ${({ isRotateX }) =>
-      isRotateX ? 'rotateX(-180deg)' : 'rotateY(-180deg)'};
+      isRotateX ? "rotateX(-180deg)" : "rotateY(-180deg)"};
   }
 
   &:hover .back {
-    transform: ${({ isRotateX }) => (isRotateX ? 'rotateX(0)' : 'rotateY(0)')};
+    transform: ${({ isRotateX }) => (isRotateX ? "rotateX(0)" : "rotateY(0)")};
   }
 `;

@@ -1,12 +1,16 @@
-import Wrap from "../../LV2/Card/Wrap";
+import { Fragment } from "react";
 import HotelCard from "./HotelCard";
 
 const Hotels = () => {
   return (
     <section className="my-10">
-      <Wrap>
-        <HotelCard />
-      </Wrap>
+      <div className="space-y-5">
+        {[1, 2, 3].map((el, index) => (
+          <Fragment key={index}>
+            <HotelCard />
+          </Fragment>
+        ))}
+      </div>
     </section>
   );
 };
