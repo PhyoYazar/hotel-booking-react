@@ -28,8 +28,8 @@ const onResponse = (response: AxiosResponse): AxiosResponse => {
 };
 
 const onResponseError = (error: AxiosError): Promise<AxiosError> => {
-  if (error.name === "CanceledError") {
-    console.log("Response ===>>> API is canceled");
+  if (error.name === "CanceledError" || error.name === "AbortError") {
+    console.log("Response ===>>> API fetching is canceled/aborted.");
   } else {
     console.log("response error => ", error);
   }

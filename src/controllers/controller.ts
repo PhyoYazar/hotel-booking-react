@@ -1,13 +1,7 @@
 import axios from "axios";
+import type { SignalApiControllerI } from "../lib/interface/api";
 
-interface ParameterI {
-  endpoint: string;
-  params?: any;
-  data?: any;
-  signal?: any;
-}
-
-export const apiController = async (para: ParameterI) => {
+export const apiController = async (para: SignalApiControllerI) => {
   const api = para.endpoint.split(":");
 
   const client = axios.request({
@@ -18,5 +12,9 @@ export const apiController = async (para: ParameterI) => {
     signal: para.signal,
   });
 
-  return await client.then((res) => res && res).catch((error) => error);
+  // return await client
+  //   .then((res) => res && res)
+  //   .catch((error) => error);
+
+  return client;
 };

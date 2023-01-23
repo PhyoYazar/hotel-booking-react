@@ -7,4 +7,8 @@ export const apiRoutes = {
 
   // hotel
   getAllHotels: `get:hotels`,
+
+  // bookings
+
+  // users
 };
