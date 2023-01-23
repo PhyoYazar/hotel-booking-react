@@ -18,3 +18,9 @@ export interface HotelI {
   createdAt: string;
   updatedAt: string;
 }
+
+export interface AllHotelsI {
+  status: string;
+  results: number;
+  data: HotelI[];
+}

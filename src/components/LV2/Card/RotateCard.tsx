@@ -3,6 +3,8 @@ import styled from "styled-components";
 interface StyledRotateInterface {
   width?: number;
   height?: number;
+  frontBgColor?: string;
+  backBgColor?: string;
   isRotateX?: boolean;
 }
 
@@ -53,13 +55,13 @@ const StyledRotateCard = styled.div<StyledRotateInterface>`
   }
 
   & .back {
-    background-color: ${({ theme }) => theme.colors.rose200};
+    background-color: ${({ backBgColor }) => backBgColor && backBgColor};
     transform: ${({ isRotateX }) =>
       isRotateX ? "rotateX(180deg)" : "rotateY(180deg)"};
   }
 
   & .front {
-    background-color: ${({ theme }) => theme.colors.emerald200};
+    background-color: ${({ frontBgColor }) => frontBgColor && frontBgColor};
   }
 
   &:hover .front {
