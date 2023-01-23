@@ -1,10 +1,14 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 import { DefaultTheme, ThemeProvider } from "styled-components";
+import axios from "axios";
 
 import App from "./App";
 import { colors, fontSize, fontWeight, GlobalStyle } from "./components/LV1";
+import { setupInterceptorsTo } from "./controllers";
 import "./index.css";
+
+setupInterceptorsTo(axios);
 
 const theme: DefaultTheme = {
   colors: colors,
