@@ -13,6 +13,8 @@ interface ButtonInterface {
   textcolor?: string;
   bgcolor?: string;
   bghovercolor?: string;
+  texthovercolor?: string;
+  borderhovercolor?: string;
 }
 
 const getButton = (props: ButtonInterface) => {
@@ -62,6 +64,9 @@ const ButtonStyled = styled.button<ButtonInterface>`
   &:hover {
     /* transform: translateY(-0.3px); */
 
+    border: 1.5px solid
+      ${({ borderhovercolor }) => borderhovercolor && borderhovercolor};
+    color: ${({ texthovercolor }) => texthovercolor && texthovercolor};
     background-color: ${({ bghovercolor }) => bghovercolor && bghovercolor};
   }
 

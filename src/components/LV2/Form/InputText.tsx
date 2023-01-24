@@ -4,19 +4,20 @@ import {
   Controller,
   FieldPath,
   FieldValues,
-  //   FieldError,
+  FieldError,
   //   UseControllerProps,
 } from "react-hook-form";
 
 import { FormValues } from "../../../lib/interface/form";
-import { Image } from "../../LV1";
+import { Image, Text } from "../../LV1";
 
 interface Props<T extends FieldValues> {
-  //   error: FieldError | undefined;
+  // errors: FieldError | undefined;
   name: FieldPath<FormValues>;
   control: Control<FormValues>;
   defaultValue?: any;
 
+  errors: string | undefined;
   label: string;
   type?: string;
   placeholder?: string;
@@ -59,10 +60,12 @@ const InputText = <T extends FieldValues>(props: Props<T>) => {
               iconType={props.showPass ? "eyeOpen" : "eyeClose"}
               width={25}
               height={25}
-              fillColor={theme.colors.black}
+              fillColor={theme.colors.neutral700}
             />
           </div>
         )}
+
+        {props.errors && <ErrorTextStyled>{props.errors}</ErrorTextStyled>}
       </div>
     </div>
   );
@@ -70,16 +73,20 @@ const InputText = <T extends FieldValues>(props: Props<T>) => {
 
 export default InputText;
 
+const ErrorTextStyled = styled(Text)`
+  color: ${({ theme }) => theme.colors.rose400};
+`;
+
 const LabelStyled = styled.label`
-  font-size: ${({ theme }) => theme.fontSize.semilg}px;
+  font-size: ${({ theme }) => theme.fontSize.md}px;
   font-weight: ${({ theme }) => theme.fontWeight.lg};
-  color: ${({ theme }) => theme.colors.neutral500};
+  color: ${({ theme }) => theme.colors.neutral600};
 `;
 
 const InputStyled = styled.input`
   width: 300px;
   padding: 5px 10px;
-  font-size: ${({ theme }) => theme.fontSize.semilg}px;
+  font-size: ${({ theme }) => theme.fontSize.md}px;
 
   border: 3px solid ${({ theme }) => theme.colors.neutral400};
   border-radius: 8px;
@@ -90,6 +97,6 @@ const InputStyled = styled.input`
   &:active,
   &:focus {
     outline: none;
-    border: 3px solid ${({ theme }) => theme.colors.neutral600};
+    border: 3px solid ${({ theme }) => theme.colors.neutral500};
   }
 `;

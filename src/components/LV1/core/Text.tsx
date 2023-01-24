@@ -44,6 +44,7 @@ export const Text = styled.p<TextInterface>`
 export const Title = styled(Text)<TextInterface>`
   font-size: ${fontSize.md}px;
   font-weight: ${fontWeight.lg};
+  text-transform: capitalize;
 
   margin-bottom: ${(props) => (props.mb ? props.mb : "15")}px;
   ${({ size }) =>

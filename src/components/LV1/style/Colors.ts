@@ -27,6 +27,17 @@ export const colors = {
   emerald200: "#a7f3d0",
   emerald100: "#d1fae5",
 
+  amber900: "#7c2d12",
+  amber800: "#9a3412",
+  amber700: "#c2410c",
+  amber600: "#ea580c",
+  amber500: "#f97316",
+  amber400: "#fb923c",
+  amber300: "#fdba74",
+  amber200: "#fed7aa",
+  amber100: "#ffedd5",
+  amber50: "#fffbeb",
+
   rose900: "#881337",
   rose800: "#9f1239",
   rose700: "#be123c",

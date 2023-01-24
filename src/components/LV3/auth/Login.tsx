@@ -14,8 +14,6 @@ const loginValidation = yup
 const Login = () => {
   return (
     <section>
-      <Title>Login</Title>
-
       <AuthForm type="login" validation={loginValidation} />
     </section>
   );

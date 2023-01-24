@@ -16,8 +16,6 @@ const registerValidation = yup
 const Register = () => {
   return (
     <section>
-      <Title>Register</Title>
-
       <AuthForm type="register" validation={registerValidation} />
     </section>
   );

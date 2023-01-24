@@ -32,6 +32,17 @@ declare module "styled-components" {
       emerald200: string;
       emerald100: string;
 
+      amber900: string;
+      amber800: string;
+      amber700: string;
+      amber600: string;
+      amber500: string;
+      amber400: string;
+      amber300: string;
+      amber200: string;
+      amber100: string;
+      amber50: string;
+
       rose900: string;
       rose800: string;
       rose700: string;
