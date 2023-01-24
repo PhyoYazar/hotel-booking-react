@@ -1,13 +1,13 @@
+import { useState } from "react";
+import { Link } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
+import styled, { useTheme } from "styled-components";
 
 import Button from "../../LV2/Button/Button";
 import { FormValues } from "../../../lib/interface/form";
 import InputText from "../../LV2/Form/InputText";
 import { Text, Title } from "../../LV1";
-import styled, { useTheme } from "styled-components";
-import { Link } from "react-router-dom";
-import { useState } from "react";
 
 interface AuthFormPropsI {
   type: string;
@@ -21,10 +21,11 @@ const AuthForm = (props: AuthFormPropsI) => {
   const theme = useTheme();
 
   const {
+    formState: { errors, isSubmitting },
     handleSubmit,
     control,
-    formState: { errors, isSubmitting },
   } = useForm<FormValues>({
+    mode: "onChange",
     defaultValues: {
       name: "",
       email: "",
@@ -32,10 +33,15 @@ const AuthForm = (props: AuthFormPropsI) => {
       passwordConfirm: "",
     },
     resolver: yupResolver(props.validation),
-    mode: "onChange",
   });
 
-  const onSubmit = (data: FormValues) => console.log(data);
+  const onSubmit = (data: FormValues) => {
+    if (props.type === "login") {
+    }
+    if (props.type === "register") {
+    }
+    console.log(data);
+  };
 
   return (
     <Container>

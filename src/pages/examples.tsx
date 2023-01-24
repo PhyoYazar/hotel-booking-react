@@ -1,11 +1,9 @@
 import { useEffect } from "react";
-import { Image } from "../components/LV1";
+import { iconsName, Image, Text } from "../components/LV1";
 import { apiController, apiRoutes } from "../controllers";
 
 const Example = () => {
   useEffect(() => {
-    console.log("useEffect rerendering...");
-
     const controllerH = new AbortController();
     (async () => {
       try {
@@ -37,9 +35,15 @@ const Example = () => {
   });
 
   return (
-    <section>
-      <Image iconType="sun" width={40} height={40} />
-      <Image iconType="eyeOpen" width={40} height={40} />
+    <section className="space-y-4">
+      <div className="flex flex-wrap gap-4">
+        {iconsName.map((icon, index) => (
+          <div key={index} className="flex-center flex-col">
+            <Image iconType={icon} width={40} height={40} />
+            <Text>{icon}</Text>
+          </div>
+        ))}
+      </div>
 
       <Image
         iconType="image"
