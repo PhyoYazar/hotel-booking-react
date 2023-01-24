@@ -7,6 +7,7 @@ interface ButtonInterface {
   href?: string;
   type?: "button" | "submit";
 
+  disabled?: boolean;
   fullWidth?: boolean;
   textsize?: string;
   bordercolor?: string;

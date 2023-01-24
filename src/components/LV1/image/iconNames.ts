@@ -5,6 +5,6 @@ export const iconsName = [
   "phone",
   "mail",
   "map",
-  "eyeOpen",
-  "eyeClose",
+  "openEye",
+  "closeEye",
 ];

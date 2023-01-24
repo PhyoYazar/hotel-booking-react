@@ -39,6 +39,7 @@ const Example = () => {
   return (
     <section>
       <Image iconType="sun" width={40} height={40} />
+      <Image iconType="eyeOpen" width={40} height={40} />
 
       <Image
         iconType="image"

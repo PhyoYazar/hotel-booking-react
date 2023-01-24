@@ -34,44 +34,53 @@ const InputText = <T extends FieldValues>(props: Props<T>) => {
   return (
     <div className="flex flex-col gap-1">
       <LabelStyled htmlFor={props.name}>{props.label}</LabelStyled>
-      <div className="relative">
-        <Controller
-          name={props.name}
-          control={props.control}
-          render={({ field }) => (
-            <InputStyled
-              {...field}
-              type={props.type ? props.type : "text"}
-              id={props.name}
-              placeholder={props.placeholder}
-              disabled={props.disabled}
-            />
-          )}
-          defaultValue={props.defaultValue}
-          rules={{ required: true }}
-        />
-
-        {props.password && (
-          <div
-            className="absolute top-0 right-2 h-full flex items-center z-10 cursor-pointer"
-            onClick={props.onClick}
-          >
-            <Image
-              iconType={props.showPass ? "eyeOpen" : "eyeClose"}
-              width={25}
-              height={25}
-              fillColor={theme.colors.neutral700}
-            />
-          </div>
+      <Controller
+        name={props.name}
+        control={props.control}
+        render={({ field }) => (
+          <>
+            <div className="relative">
+              <InputStyled
+                {...field}
+                type={props.type ? props.type : "text"}
+                id={props.name}
+                placeholder={props.placeholder}
+                disabled={props.disabled}
+              />
+              {props.password && (
+                <EyeIconStyled onClick={props.onClick}>
+                  <Image
+                    iconType={props.showPass ? "openEye" : "closeEye"}
+                    width={23}
+                    height={23}
+                    color={theme.colors.neutral400}
+                    // fillColor={theme.colors.neutral400}
+                  />
+                </EyeIconStyled>
+              )}
+            </div>
+            {props.errors && <ErrorTextStyled>{props.errors}</ErrorTextStyled>}
+          </>
         )}
-
-        {props.errors && <ErrorTextStyled>{props.errors}</ErrorTextStyled>}
-      </div>
+        defaultValue={props.defaultValue}
+        rules={{ required: true }}
+      />
     </div>
   );
 };
 
 export default InputText;
+
+const EyeIconStyled = styled.div`
+  width: 25px;
+  height: 25px;
+  cursor: pointer;
+
+  position: absolute;
+  top: 50%;
+  right: 8px;
+  transform: translate(0, -50%);
+`;
 
 const ErrorTextStyled = styled(Text)`
   color: ${({ theme }) => theme.colors.rose400};

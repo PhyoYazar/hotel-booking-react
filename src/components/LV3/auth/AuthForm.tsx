@@ -7,6 +7,7 @@ import InputText from "../../LV2/Form/InputText";
 import { Text, Title } from "../../LV1";
 import styled, { useTheme } from "styled-components";
 import { Link } from "react-router-dom";
+import { useState } from "react";
 
 interface AuthFormPropsI {
   type: string;
@@ -14,6 +15,9 @@ interface AuthFormPropsI {
 }
 
 const AuthForm = (props: AuthFormPropsI) => {
+  const [showPassword, setShowPassword] = useState<boolean>(false);
+  const [showPasswordC, setShowPasswordC] = useState<boolean>(false);
+
   const theme = useTheme();
 
   const {
@@ -66,28 +70,34 @@ const AuthForm = (props: AuthFormPropsI) => {
             />
 
             <InputText
-              password
-              type="password"
+              password={true}
+              type={showPassword ? "text" : "password"}
               control={control}
               name="password"
               errors={errors.password?.message}
               label="Password"
               placeholder="Enter password"
+              showPass={showPassword}
+              onClick={() => setShowPassword((prev) => !prev)}
             />
 
             {props.type !== "login" && (
               <InputText
-                type="password"
+                password
+                type={showPasswordC ? "text" : "password"}
                 control={control}
                 name="passwordConfirm"
                 errors={errors.passwordConfirm?.message}
                 label="Confirm Password"
                 placeholder="Enter confirm password"
+                showPass={showPasswordC}
+                onClick={() => setShowPasswordC((prev) => !prev)}
               />
             )}
 
             <div className="pt-4">
               <Button
+                disabled={isSubmitting}
                 type="submit"
                 textsize="md"
                 textcolor={theme.colors.white}
