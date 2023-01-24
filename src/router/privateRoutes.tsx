@@ -1,4 +1,4 @@
-import HotelDetailPage from "../pages/hotel-detail";
+import HotelDetailPage from "../pages/hotel/hotel-detail";
 import MyBookingsPage from "../pages/my-bookings";
 import Profile from "../pages/profile";
 

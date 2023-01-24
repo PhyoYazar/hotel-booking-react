@@ -10,10 +10,9 @@ const Hotels = () => {
     endpoint: apiRoutes.getAllHotels,
   });
 
-  console.log(isLoading);
-
   if (isLoading) return <div className="flex-center py-32">Loading...</div>;
-  if (error) return <div className="flex-center">Something went wrong.</div>;
+  if (error)
+    return <div className="flex-center py-32">Something went wrong.</div>;
 
   return (
     <section className="my-10">

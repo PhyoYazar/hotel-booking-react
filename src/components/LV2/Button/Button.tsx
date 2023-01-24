@@ -1,11 +1,13 @@
 import { Link } from "react-router-dom";
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 
 interface ButtonInterface {
   children?: React.ReactNode;
 
   href?: string;
+  type?: "button" | "submit";
 
+  fullWidth?: boolean;
   textsize?: string;
   bordercolor?: string;
   textcolor?: string;
@@ -14,7 +16,11 @@ interface ButtonInterface {
 }
 
 const getButton = (props: ButtonInterface) => {
-  return <ButtonStyled {...props}>{props.children}</ButtonStyled>;
+  return (
+    <ButtonStyled type={props.type ? props.type : "button"} {...props}>
+      {props.children}
+    </ButtonStyled>
+  );
 };
 
 const Button = (props: ButtonInterface) => {
@@ -32,6 +38,11 @@ const Button = (props: ButtonInterface) => {
 export default Button;
 
 const ButtonStyled = styled.button<ButtonInterface>`
+  ${({ fullWidth }) =>
+    fullWidth &&
+    css`
+      width: 100%;
+    `}
   padding: 6px 20px;
   border-radius: 30px;
   font-weight: ${({ theme }) => theme.fontWeight.semilg};
@@ -41,23 +52,21 @@ const ButtonStyled = styled.button<ButtonInterface>`
 
   border: 1.5px solid
     ${({ theme, bordercolor }) =>
-      bordercolor ? bordercolor : theme.colors.neutral200};
+      bordercolor ? bordercolor : theme.colors.neutral500};
 
   color: ${({ theme, textcolor }) =>
-    textcolor ? textcolor : theme.colors.neutral200};
+    textcolor ? textcolor : theme.colors.neutral600};
 
-  background-color: ${({ theme, bgcolor }) =>
-    bgcolor ? bgcolor : theme.colors.emerald500};
+  background-color: ${({ bgcolor }) => bgcolor && bgcolor};
 
   &:hover {
     /* transform: translateY(-0.3px); */
 
-    background-color: ${({ theme, bghovercolor }) =>
-      bghovercolor ? bghovercolor : theme.colors.emerald900};
+    background-color: ${({ bghovercolor }) => bghovercolor && bghovercolor};
   }
 
   &:active {
-    transform: translateY(0.2px) scale(1.02);
+    transform: scale(1.05);
   }
 
   transition: all ${({ theme }) => theme.transition};
