@@ -1,7 +1,7 @@
-import Login from "../components/LV3/auth/Login";
-import Register from "../components/LV3/auth/Register";
 import PublicLayout from "../components/Layout/PublicLayout";
-import AllHotelsPage from "../pages/all-hotels";
+import AllHotelsPage from "../pages/hotel/all-hotels";
+import LoginPage from "../pages/auth/login";
+import RegisterPage from "../pages/auth/register";
 
 export default [
   {
@@ -11,10 +11,10 @@ export default [
   },
   {
     path: "login",
-    element: <Login />,
+    element: <LoginPage />,
   },
   {
     path: "Register",
-    element: <Register />,
+    element: <RegisterPage />,
   },
 ];

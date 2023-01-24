@@ -4,8 +4,11 @@ import {
   DarkModeIcon,
   LightModeIcon,
   MailIcon,
+  MapIcon,
   PhoneIcon,
   SwapIcon,
+  EyeOpenIcon,
+  EyeCloseIcon,
 } from "./icon";
 
 interface ImageComponentInterface {
@@ -62,6 +65,15 @@ const IconComponent = (props: ImageComponentInterface) => {
 
     case "mail":
       return <MailIcon {...props} />;
+
+    case "openEye":
+      return <EyeOpenIcon {...props} />;
+
+    case "closeEye":
+      return <EyeCloseIcon {...props} />;
+
+    case "map":
+      return <MapIcon {...props} />;
 
     case "phone":
       return <PhoneIcon {...props} />;

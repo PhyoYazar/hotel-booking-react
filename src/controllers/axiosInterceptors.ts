@@ -9,8 +9,6 @@ import { getToken } from "../services/auth";
 const token = getToken();
 
 const onRequest = (config: AxiosRequestConfig): AxiosRequestConfig => {
-  // console.info(`[request] => [${JSON.stringify(config)}]`);
-
   config.baseURL = import.meta.env.VITE_REACT_API_ENDPOINT;
   config.headers["Content-Type"] = "application/json";
   config.headers["Accept"] = "application/json";
@@ -20,21 +18,21 @@ const onRequest = (config: AxiosRequestConfig): AxiosRequestConfig => {
 };
 
 const onRequestError = (error: AxiosError): Promise<AxiosError> => {
-  // console.error(`[request error] => [${JSON.stringify(error)}]`);
-  console.log("error => ", error);
+  console.log("request error => ", error);
 
   return Promise.reject(error);
 };
 
 const onResponse = (response: AxiosResponse): AxiosResponse => {
-  // console.info(`[response] => [${JSON.stringify(response)}]`);
-
   return response;
 };
 
 const onResponseError = (error: AxiosError): Promise<AxiosError> => {
-  // console.error(`[response error] [${JSON.stringify(error)}]`);
-  console.log("error => ", error);
+  if (error.name === "CanceledError" || error.name === "AbortError") {
+    console.log("Response ===>>> API fetching is canceled/aborted.");
+  } else {
+    console.log("response error => ", error);
+  }
 
   return Promise.reject(error);
 };
