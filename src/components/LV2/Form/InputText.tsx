@@ -8,13 +8,13 @@ import {
   //   UseControllerProps,
 } from "react-hook-form";
 
-import { FormValues } from "../../../lib/interface/form";
+import { AuthFormValues } from "../../../lib/interface/form";
 import { Image, Text } from "../../LV1";
 
 interface Props<T extends FieldValues> {
   // errors: FieldError | undefined;
-  name: FieldPath<FormValues>;
-  control: Control<FormValues>;
+  name: FieldPath<AuthFormValues>;
+  control: Control<AuthFormValues>;
   defaultValue?: any;
 
   errors: string | undefined;
