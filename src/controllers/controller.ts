@@ -12,9 +12,9 @@ export const apiController = async (para: SignalApiControllerI) => {
     signal: para.signal,
   });
 
-  // return await client
-  //   .then((res) => res && res)
-  //   .catch((error) => error);
+  return await client
+    .then((res) => res?.data && res.data)
+    .catch((error) => error);
 
-  return client;
+  // return client;
 };

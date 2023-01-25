@@ -17,7 +17,7 @@ const Hotels = () => {
   return (
     <section className="my-10">
       <div className="space-y-5">
-        {data?.data.map((hotel, index) => (
+        {data?.data?.map((hotel, index) => (
           <Fragment key={index}>
             <HotelCard hotel={hotel} />
           </Fragment>

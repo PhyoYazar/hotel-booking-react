@@ -5,5 +5,5 @@ export interface ApiControllerI {
 }
 
 export interface SignalApiControllerI extends ApiControllerI {
-  signal: any;
+  signal?: any;
 }

@@ -1,10 +1,9 @@
 import { Link } from "react-router-dom";
+import { getToken } from "../../services/auth";
 
-interface NavInterface {
-  isLogin?: boolean;
-}
+const MainNavigation = () => {
+  const token = getToken();
 
-const MainNavigation = ({ isLogin }: NavInterface) => {
   return (
     <header className="bg-neutral200">
       <div className="flex-between container py-6">
@@ -14,13 +13,13 @@ const MainNavigation = ({ isLogin }: NavInterface) => {
 
         <nav className="">
           <ul className="flex items-center space-x-10">
-            {isLogin && (
+            {token && (
               <Link to="/auth/my-bookings">
                 <li className="">My Bookings</li>
               </Link>
             )}
 
-            {isLogin ? (
+            {token ? (
               <Link to="/auth/profile">
                 <li className="">Profile</li>
               </Link>
