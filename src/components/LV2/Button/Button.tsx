@@ -6,6 +6,7 @@ interface ButtonInterface {
 
   href?: string;
   type?: "button" | "submit";
+  onClick?: () => void;
 
   disabled?: boolean;
   fullWidth?: boolean;

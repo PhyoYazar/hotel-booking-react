@@ -12,7 +12,9 @@ const Hotels = () => {
 
   if (isLoading) return <div className="flex-center py-32">Loading...</div>;
   if (error)
-    return <div className="flex-center py-32">Something went wrong.</div>;
+    return (
+      <div className="flex-center py-32">Something went wrong. {error}</div>
+    );
 
   return (
     <section className="my-10">

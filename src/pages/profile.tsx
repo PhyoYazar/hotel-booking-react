@@ -1,5 +1,7 @@
-const Profile = () => {
-  return <div>Profile</div>;
+import Profile from "../components/LV3/profile/Profile";
+
+const ProfilePage = () => {
+  return <Profile />;
 };
 
-export default Profile;
+export default ProfilePage;

@@ -24,3 +24,8 @@ export interface AllHotelsI {
   results: number;
   data: HotelI[];
 }
+export interface HotelsDetailI {
+  status: string;
+  results: number;
+  data: HotelI;
+}
