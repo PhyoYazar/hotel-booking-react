@@ -15,14 +15,14 @@ const useAxios = <T,>(apiData: ApiControllerI) => {
       setIsLoading(true);
 
       try {
-        const res = await apiController({
+        const res: T = await apiController({
           endpoint: apiData.endpoint,
           params: apiData.params,
           data: apiData.data,
           signal: controller.signal,
         });
 
-        setData(res.data);
+        setData(res);
         setError("");
         //
       } catch (error: any) {

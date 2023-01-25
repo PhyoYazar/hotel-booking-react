@@ -11,4 +11,5 @@ export const apiRoutes = {
   // bookings
 
   // users
+  updateUserName: `patch:users/updateMe`,
 };

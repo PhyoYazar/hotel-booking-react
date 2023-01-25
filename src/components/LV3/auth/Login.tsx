@@ -1,6 +1,5 @@
 import * as yup from "yup";
 
-import { Title } from "../../LV1";
 import AuthForm from "./AuthForm";
 
 const loginValidation = yup

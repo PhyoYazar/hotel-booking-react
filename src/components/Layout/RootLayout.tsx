@@ -19,7 +19,11 @@ const RootLayout = () => {
       //   navigate("/", { replace: true, state: { path: prevPath } });
       // }
 
-      if (!isAuthenticated) {
+      if (isAuthenticated) {
+        if (pathname.includes("login") || pathname.includes("register")) {
+          navigate("/", { replace: true });
+        }
+      } else {
         if (pathname.includes("/auth/")) {
           navigate("/login");
         }

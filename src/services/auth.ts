@@ -1,5 +1,6 @@
 import CryptoJS from "crypto-js";
 import Cookies from "js-cookie";
+import type { APILoginDataInterface } from "../lib/interface/auth";
 
 export const setToken = ({ j_token }: { j_token: string }): void => {
   const copherAccessToken = CryptoJS.AES.encrypt(
@@ -26,7 +27,11 @@ export const getToken = (): string | null => {
   }
 };
 
-export const setUserInfo = ({ user_data }: { user_data: string }): void => {
+export const setUserInfo = ({
+  user_data,
+}: {
+  user_data: APILoginDataInterface;
+}): void => {
   const cipherUserInfo = CryptoJS.AES.encrypt(
     JSON.stringify(user_data),
     "user_info"
@@ -38,7 +43,7 @@ export const setUserInfo = ({ user_data }: { user_data: string }): void => {
   });
 };
 
-export const getUserInfo = (): string | null => {
+export const getUserInfo = (): APILoginDataInterface | null => {
   const sessi = Cookies.get("user_info");
   if (!sessi) return null;
   const bytes = CryptoJS.AES.decrypt(sessi, "user_info");

@@ -1,7 +1,7 @@
-import React from "react";
+import HotelDetails from "../../components/LV3/hotelDetails/HotelDetails";
 
 const HotelDetailPage = () => {
-  return <div>Hotel Detail Page</div>;
+  return <HotelDetails />;
 };
 
 export default HotelDetailPage;

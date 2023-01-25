@@ -1,6 +1,6 @@
 import HotelDetailPage from "../pages/hotel/hotel-detail";
 import MyBookingsPage from "../pages/my-bookings";
-import Profile from "../pages/profile";
+import ProfilePage from "../pages/profile";
 
 export default [
   {
@@ -17,6 +17,6 @@ export default [
   },
   {
     path: "profile",
-    element: <Profile />,
+    element: <ProfilePage />,
   },
 ];

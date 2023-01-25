@@ -1,13 +1,16 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import styled, { useTheme } from "styled-components";
 
 import Button from "../../LV2/Button/Button";
-import { FormValues } from "../../../lib/interface/form";
+import { AuthFormValues } from "../../../lib/interface/form";
 import InputText from "../../LV2/Form/InputText";
 import { Text, Title } from "../../LV1";
+import { apiController, apiRoutes } from "../../../controllers";
+import { setToken, setUserInfo } from "../../../services/auth";
+import { APILoginResInterface } from "../../../lib/interface/auth";
 
 interface AuthFormPropsI {
   type: string;
@@ -18,13 +21,14 @@ const AuthForm = (props: AuthFormPropsI) => {
   const [showPassword, setShowPassword] = useState<boolean>(false);
   const [showPasswordC, setShowPasswordC] = useState<boolean>(false);
 
+  const navigate = useNavigate();
   const theme = useTheme();
 
   const {
     formState: { errors, isSubmitting },
     handleSubmit,
     control,
-  } = useForm<FormValues>({
+  } = useForm<AuthFormValues>({
     mode: "onChange",
     defaultValues: {
       name: "",
@@ -35,12 +39,34 @@ const AuthForm = (props: AuthFormPropsI) => {
     resolver: yupResolver(props.validation),
   });
 
-  const onSubmit = (data: FormValues) => {
+  const onSubmit = async (data: AuthFormValues) => {
+    // LOGIN
     if (props.type === "login") {
+      const res: APILoginResInterface = await apiController({
+        endpoint: apiRoutes.login,
+        data: { email: data.email, password: data.password },
+      });
+
+      if (res?.status === "success") {
+        setToken({ j_token: res.token });
+        setUserInfo({ user_data: res.data });
+        navigate("/", { replace: true });
+      }
     }
+
+    // REGISTER
     if (props.type === "register") {
+      const res: APILoginResInterface = await apiController({
+        endpoint: apiRoutes.register,
+        data: data,
+      });
+
+      if (res?.status === "success") {
+        setToken({ j_token: res.token });
+        setUserInfo({ user_data: res.data });
+        navigate("/", { replace: true });
+      }
     }
-    console.log(data);
   };
 
   return (
