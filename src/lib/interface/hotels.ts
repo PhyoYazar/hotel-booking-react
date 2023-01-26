@@ -1,5 +1,5 @@
 export interface RoomI {
-  type: "1P" | "2P" | "3P" | "4P" | "5P" | "6P";
+  type: '1P' | '2P' | '3P' | '4P' | '5P' | '6P';
   totalRooms: number;
   price: number;
 }

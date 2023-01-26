@@ -1,12 +1,12 @@
-import * as yup from "yup";
-import { yupResolver } from "@hookform/resolvers/yup";
-import { useForm } from "react-hook-form";
+import * as yup from 'yup';
+import { yupResolver } from '@hookform/resolvers/yup';
+import { useForm } from 'react-hook-form';
 
-import InputText from "../../LV2/Form/InputText";
-import Button from "../../LV2/Button/Button";
-import { apiController, apiRoutes } from "../../../controllers";
-import { APILoginResInterface } from "../../../lib/interface/auth";
-import { getUserInfo, setUserInfo } from "../../../services/auth";
+import InputText from '../../LV2/Form/InputText';
+import Button from '../../LV2/Button/Button';
+import { apiController, apiRoutes } from '../../../controllers';
+import { APILoginResInterface } from '../../../lib/interface/auth';
+import { getUserInfo, setUserInfo } from '../../../services/auth';
 
 const nameValidation = yup
   .object()
@@ -27,7 +27,7 @@ const NameChangeForm = () => {
     handleSubmit,
     control,
   } = useForm<NameType>({
-    mode: "onChange",
+    mode: 'onChange',
     defaultValues: {
       name: userData?.name,
     },
@@ -39,7 +39,7 @@ const NameChangeForm = () => {
       endpoint: apiRoutes.updateUserName,
       data,
     });
-    if (res?.status === "success") {
+    if (res?.status === 'success') {
       setUserInfo({ user_data: res.data });
     }
   };
@@ -48,14 +48,14 @@ const NameChangeForm = () => {
     <form onSubmit={handleSubmit(onSubmit)}>
       <InputText
         control={control}
-        name="name"
+        name='name'
         errors={errors.name?.message}
-        label="Name"
-        placeholder="Enter name"
+        label='Name'
+        placeholder='Enter name'
       />
 
-      <div className="pt-4">
-        <Button type="submit">Save</Button>
+      <div className='pt-4'>
+        <Button type='submit'>Save</Button>
       </div>
     </form>
   );

@@ -1,6 +1,6 @@
-import { useEffect } from "react";
-import { iconsName, Image, Text } from "../components/LV1";
-import { apiController, apiRoutes } from "../controllers";
+import { useEffect } from 'react';
+import { iconsName, Image, Text } from '../components/LV1';
+import { apiController, apiRoutes } from '../controllers';
 
 const Example = () => {
   useEffect(() => {
@@ -10,11 +10,11 @@ const Example = () => {
         const hotelRes = await apiController({
           endpoint: apiRoutes.getAllHotels,
           signal: controllerH.signal,
-          params: { name: "Azu Hotel" },
+          params: { name: 'Azu Hotel' },
         });
         console.log(hotelRes);
       } catch (err) {
-        console.log("catch =>", err);
+        console.log('catch =>', err);
       }
     })();
 
@@ -35,10 +35,10 @@ const Example = () => {
   });
 
   return (
-    <section className="space-y-4">
-      <div className="flex flex-wrap gap-4">
+    <section className='space-y-4'>
+      <div className='flex flex-wrap gap-4'>
         {iconsName.map((icon, index) => (
-          <div key={index} className="flex-center flex-col">
+          <div key={index} className='flex-center flex-col'>
             <Image iconType={icon} width={40} height={40} />
             <Text>{icon}</Text>
           </div>
@@ -46,9 +46,9 @@ const Example = () => {
       </div>
 
       <Image
-        iconType="image"
-        src="https://tinypng.com/images/social/website.jpg"
-        alt="Panda is sitting and eatting bamboo"
+        iconType='image'
+        src='https://tinypng.com/images/social/website.jpg'
+        alt='Panda is sitting and eatting bamboo'
         width={400}
         // height={300}
       />

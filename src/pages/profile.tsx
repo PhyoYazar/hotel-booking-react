@@ -1,4 +1,4 @@
-import Profile from "../components/LV3/profile/Profile";
+import Profile from '../components/LV3/profile/Profile';
 
 const ProfilePage = () => {
   return <Profile />;

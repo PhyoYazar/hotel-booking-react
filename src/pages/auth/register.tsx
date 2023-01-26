@@ -1,4 +1,4 @@
-import Register from "../../components/LV3/auth/Register";
+import Register from '../../components/LV3/auth/Register';
 
 const RegisterPage = () => {
   return <Register />;

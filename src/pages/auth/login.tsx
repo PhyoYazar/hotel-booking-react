@@ -1,4 +1,4 @@
-import Login from "../../components/LV3/auth/Login";
+import Login from '../../components/LV3/auth/Login';
 
 const LoginPage = () => {
   return <Login />;

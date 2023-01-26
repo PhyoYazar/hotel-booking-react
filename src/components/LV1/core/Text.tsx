@@ -1,5 +1,5 @@
-import styled, { css } from "styled-components";
-import { fontSize, fontWeight } from "../style";
+import styled, { css } from 'styled-components';
+import { fontSize, fontWeight } from '../style';
 
 interface TextInterface {
   color?: string;
@@ -46,7 +46,7 @@ export const Title = styled(Text)<TextInterface>`
   font-weight: ${fontWeight.lg};
   text-transform: capitalize;
 
-  margin-bottom: ${(props) => (props.mb ? props.mb : "15")}px;
+  margin-bottom: ${(props) => (props.mb ? props.mb : '15')}px;
   ${({ size }) =>
     size &&
     css`

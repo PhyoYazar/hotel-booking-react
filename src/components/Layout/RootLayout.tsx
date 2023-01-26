@@ -1,6 +1,6 @@
-import { useEffect } from "react";
-import { Outlet, useLocation, useNavigate } from "react-router-dom";
-import { getToken } from "../../services/auth";
+import { useEffect } from 'react';
+import { Outlet, useLocation, useNavigate } from 'react-router-dom';
+import { getToken } from '../../services/auth';
 
 const isInitialized = true;
 const isAuthenticated = getToken();
@@ -20,12 +20,12 @@ const RootLayout = () => {
       // }
 
       if (isAuthenticated) {
-        if (pathname.includes("login") || pathname.includes("register")) {
-          navigate("/", { replace: true });
+        if (pathname.includes('login') || pathname.includes('register')) {
+          navigate('/', { replace: true });
         }
       } else {
-        if (pathname.includes("/auth/")) {
-          navigate("/login");
+        if (pathname.includes('/auth/')) {
+          navigate('/login');
         }
       }
     }

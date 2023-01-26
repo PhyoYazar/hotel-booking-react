@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 interface StyledRotateInterface {
   width?: number;
@@ -15,17 +15,12 @@ interface Props extends StyledRotateInterface {
   // backData: JSX.Element;
 }
 
-const RotateCard = ({
-  isRotateX,
-  frontData,
-  backData,
-  ...styleData
-}: Props) => {
+const RotateCard = ({ isRotateX, frontData, backData, ...styleData }: Props) => {
   return (
     <StyledRotateCard isRotateX={isRotateX} {...styleData}>
-      <div className="card front">{frontData()}</div>
+      <div className='card front'>{frontData()}</div>
 
-      <div className="card back">{backData()}</div>
+      <div className='card back'>{backData()}</div>
     </StyledRotateCard>
   );
 };
@@ -33,8 +28,8 @@ const RotateCard = ({
 export default RotateCard;
 
 const StyledRotateCard = styled.div<StyledRotateInterface>`
-  width: ${({ width }) => (width ? width : "250")}px;
-  height: ${({ height }) => (height ? height : "400")}px;
+  width: ${({ width }) => (width ? width : '250')}px;
+  height: ${({ height }) => (height ? height : '400')}px;
   cursor: pointer;
 
   position: relative;
@@ -43,7 +38,7 @@ const StyledRotateCard = styled.div<StyledRotateInterface>`
 
   & .card {
     width: 100%;
-    height: ${({ height }) => (height ? height : "400")}px;
+    height: ${({ height }) => (height ? height : '400')}px;
     position: absolute;
     top: 0;
     left: 0;
@@ -56,8 +51,7 @@ const StyledRotateCard = styled.div<StyledRotateInterface>`
 
   & .back {
     background-color: ${({ backBgColor }) => backBgColor && backBgColor};
-    transform: ${({ isRotateX }) =>
-      isRotateX ? "rotateX(180deg)" : "rotateY(180deg)"};
+    transform: ${({ isRotateX }) => (isRotateX ? 'rotateX(180deg)' : 'rotateY(180deg)')};
   }
 
   & .front {
@@ -65,11 +59,10 @@ const StyledRotateCard = styled.div<StyledRotateInterface>`
   }
 
   &:hover .front {
-    transform: ${({ isRotateX }) =>
-      isRotateX ? "rotateX(-180deg)" : "rotateY(-180deg)"};
+    transform: ${({ isRotateX }) => (isRotateX ? 'rotateX(-180deg)' : 'rotateY(-180deg)')};
   }
 
   &:hover .back {
-    transform: ${({ isRotateX }) => (isRotateX ? "rotateX(0)" : "rotateY(0)")};
+    transform: ${({ isRotateX }) => (isRotateX ? 'rotateX(0)' : 'rotateY(0)')};
   }
 `;

@@ -1,12 +1,12 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState } from 'react';
 
-import { apiController } from "../controllers";
-import type { ApiControllerI } from "../lib/interface/api";
+import { apiController } from '../controllers';
+import type { ApiControllerI } from '../lib/interface/api';
 
 const useAxios = <T,>(apiData: ApiControllerI) => {
   const [data, setData] = useState<T>();
   const [isLoading, setIsLoading] = useState<boolean>(false);
-  const [error, setError] = useState<string>("");
+  const [error, setError] = useState<string>('');
 
   useEffect(() => {
     const controller = new AbortController();
@@ -23,10 +23,10 @@ const useAxios = <T,>(apiData: ApiControllerI) => {
         });
 
         setData(res);
-        setError("");
+        setError('');
         //
       } catch (error: any) {
-        if (error.name === "CanceledError" || error.name === "AbortError") {
+        if (error.name === 'CanceledError' || error.name === 'AbortError') {
           // canceled API
           //
         } else {

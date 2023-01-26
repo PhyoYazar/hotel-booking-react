@@ -1,29 +1,29 @@
-import type { RouteObject } from "react-router-dom";
+import type { RouteObject } from 'react-router-dom';
 
-import PrivateLayout from "../components/Layout/PrivateLayout";
-import RootLayout from "../components/Layout/RootLayout";
-import ErrorPage from "../pages/error";
-import Example from "../pages/examples";
-import privateRoutes from "./privateRoutes";
-import publicRoutes from "./publicRoutes";
+import PrivateLayout from '../components/Layout/PrivateLayout';
+import RootLayout from '../components/Layout/RootLayout';
+import ErrorPage from '../pages/error';
+import Example from '../pages/examples';
+import privateRoutes from './privateRoutes';
+import publicRoutes from './publicRoutes';
 
 const routerConfig: RouteObject[] = [
   {
-    path: "/",
+    path: '/',
     element: <RootLayout />,
     errorElement: <ErrorPage />,
     children: [
       // PUBLIC ROUTES
-      { path: "", children: publicRoutes },
+      { path: '', children: publicRoutes },
 
       // PRIVATE ROUTES
       {
-        path: "auth",
+        path: 'auth',
         element: <PrivateLayout />,
         children: privateRoutes,
       },
       {
-        path: "exp",
+        path: 'exp',
         element: <Example />,
       },
     ],

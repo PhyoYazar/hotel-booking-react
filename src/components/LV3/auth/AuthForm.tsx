@@ -1,16 +1,16 @@
-import { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
-import { useForm } from "react-hook-form";
-import { yupResolver } from "@hookform/resolvers/yup";
-import styled, { useTheme } from "styled-components";
+import { useState } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
+import { useForm } from 'react-hook-form';
+import { yupResolver } from '@hookform/resolvers/yup';
+import styled, { useTheme } from 'styled-components';
 
-import Button from "../../LV2/Button/Button";
-import { AuthFormValues } from "../../../lib/interface/form";
-import InputText from "../../LV2/Form/InputText";
-import { Text, Title } from "../../LV1";
-import { apiController, apiRoutes } from "../../../controllers";
-import { setToken, setUserInfo } from "../../../services/auth";
-import { APILoginResInterface } from "../../../lib/interface/auth";
+import Button from '../../LV2/Button/Button';
+import { AuthFormValues } from '../../../lib/interface/form';
+import InputText from '../../LV2/Form/InputText';
+import { Text, Title } from '../../LV1';
+import { apiController, apiRoutes } from '../../../controllers';
+import { setToken, setUserInfo } from '../../../services/auth';
+import { APILoginResInterface } from '../../../lib/interface/auth';
 
 interface AuthFormPropsI {
   type: string;
@@ -29,42 +29,42 @@ const AuthForm = (props: AuthFormPropsI) => {
     handleSubmit,
     control,
   } = useForm<AuthFormValues>({
-    mode: "onChange",
+    mode: 'onChange',
     defaultValues: {
-      name: "",
-      email: "",
-      password: "",
-      passwordConfirm: "",
+      name: '',
+      email: '',
+      password: '',
+      passwordConfirm: '',
     },
     resolver: yupResolver(props.validation),
   });
 
   const onSubmit = async (data: AuthFormValues) => {
     // LOGIN
-    if (props.type === "login") {
+    if (props.type === 'login') {
       const res: APILoginResInterface = await apiController({
         endpoint: apiRoutes.login,
         data: { email: data.email, password: data.password },
       });
 
-      if (res?.status === "success") {
+      if (res?.status === 'success') {
         setToken({ j_token: res.token });
         setUserInfo({ user_data: res.data });
-        navigate("/", { replace: true });
+        navigate('/', { replace: true });
       }
     }
 
     // REGISTER
-    if (props.type === "register") {
+    if (props.type === 'register') {
       const res: APILoginResInterface = await apiController({
         endpoint: apiRoutes.register,
         data: data,
       });
 
-      if (res?.status === "success") {
+      if (res?.status === 'success') {
         setToken({ j_token: res.token });
         setUserInfo({ user_data: res.data });
-        navigate("/", { replace: true });
+        navigate('/', { replace: true });
       }
     }
   };
@@ -72,66 +72,62 @@ const AuthForm = (props: AuthFormPropsI) => {
   return (
     <Container>
       <WrapStyled>
-        <Title
-          size="bg"
-          className="text-center"
-          color={theme.colors.neutral600}
-        >
+        <Title size='bg' className='text-center' color={theme.colors.neutral600}>
           {props.type}
         </Title>
 
         <form onSubmit={handleSubmit(onSubmit)}>
-          <div className="space-y-3">
-            {props.type !== "login" && (
+          <div className='space-y-3'>
+            {props.type !== 'login' && (
               <InputText
                 control={control}
-                name="name"
+                name='name'
                 errors={errors.name?.message}
-                label="Name"
-                placeholder="Enter name"
+                label='Name'
+                placeholder='Enter name'
               />
             )}
 
             <InputText
-              type="email"
+              type='email'
               control={control}
-              name="email"
+              name='email'
               errors={errors.email?.message}
-              label="Email"
-              placeholder="Enter email"
+              label='Email'
+              placeholder='Enter email'
             />
 
             <InputText
               password={true}
-              type={showPassword ? "text" : "password"}
+              type={showPassword ? 'text' : 'password'}
               control={control}
-              name="password"
+              name='password'
               errors={errors.password?.message}
-              label="Password"
-              placeholder="Enter password"
+              label='Password'
+              placeholder='Enter password'
               showPass={showPassword}
               onClick={() => setShowPassword((prev) => !prev)}
             />
 
-            {props.type !== "login" && (
+            {props.type !== 'login' && (
               <InputText
                 password
-                type={showPasswordC ? "text" : "password"}
+                type={showPasswordC ? 'text' : 'password'}
                 control={control}
-                name="passwordConfirm"
+                name='passwordConfirm'
                 errors={errors.passwordConfirm?.message}
-                label="Confirm Password"
-                placeholder="Enter confirm password"
+                label='Confirm Password'
+                placeholder='Enter confirm password'
                 showPass={showPasswordC}
                 onClick={() => setShowPasswordC((prev) => !prev)}
               />
             )}
 
-            <div className="pt-4">
+            <div className='pt-4'>
               <Button
                 disabled={isSubmitting}
-                type="submit"
-                textsize="md"
+                type='submit'
+                textsize='md'
                 textcolor={theme.colors.white}
                 bordercolor={theme.colors.amber500}
                 bgcolor={theme.colors.amber500}
@@ -145,17 +141,12 @@ const AuthForm = (props: AuthFormPropsI) => {
           </div>
         </form>
 
-        <div className="flex-center mt-4 mb-3">
-          <Link to={props.type === "login" ? "/register" : "/login"}>
+        <div className='flex-center mt-4 mb-3'>
+          <Link to={props.type === 'login' ? '/register' : '/login'}>
             <Text color={theme.colors.neutral400}>
-              {props.type === "login" ? "Are you new" : "Have an account"}?{" "}
-              <Text
-                as="span"
-                size="sm"
-                weight="lg"
-                color={theme.colors.neutral400}
-              >
-                {props.type === "login" ? "Register" : "Login"}
+              {props.type === 'login' ? 'Are you new' : 'Have an account'}?{' '}
+              <Text as='span' size='sm' weight='lg' color={theme.colors.neutral400}>
+                {props.type === 'login' ? 'Register' : 'Login'}
               </Text>
             </Text>
           </Link>

@@ -1,4 +1,4 @@
-import styled, { css } from "styled-components";
+import styled, { css } from 'styled-components';
 
 import {
   DarkModeIcon,
@@ -9,7 +9,7 @@ import {
   SwapIcon,
   EyeOpenIcon,
   EyeCloseIcon,
-} from "./icon";
+} from './icon';
 
 interface ImageComponentInterface {
   width: number;
@@ -41,14 +41,14 @@ const ImageWrap = (props: ImageComponentInterface) => {
 };
 
 const Wrap = styled.div<ImageComponentInterface>`
-  width: ${(props) => (props.width ? props.width : "50")}px;
+  width: ${(props) => (props.width ? props.width : '50')}px;
   height: ${(props) => props.height && props.height}px;
 
   img,
   svg {
-    width: ${(props) => (props.width ? props.width : "36")}px;
+    width: ${(props) => (props.width ? props.width : '36')}px;
     height: ${(props) => props.height && props.height}px;
-    /* color: ${(props) => (props.color ? props.color : "black")}; */
+    /* color: ${(props) => (props.color ? props.color : 'black')}; */
     ${({ fullWidth }) =>
       fullWidth &&
       css`
@@ -60,31 +60,31 @@ const Wrap = styled.div<ImageComponentInterface>`
 
 const IconComponent = (props: ImageComponentInterface) => {
   switch (props.iconType) {
-    case "image":
+    case 'image':
       return <ImageWrap {...props} />;
 
-    case "mail":
+    case 'mail':
       return <MailIcon {...props} />;
 
-    case "openEye":
+    case 'openEye':
       return <EyeOpenIcon {...props} />;
 
-    case "closeEye":
+    case 'closeEye':
       return <EyeCloseIcon {...props} />;
 
-    case "map":
+    case 'map':
       return <MapIcon {...props} />;
 
-    case "phone":
+    case 'phone':
       return <PhoneIcon {...props} />;
 
-    case "swap":
+    case 'swap':
       return <SwapIcon {...props} />;
 
-    case "moon":
+    case 'moon':
       return <DarkModeIcon {...props} />;
 
-    case "sun":
+    case 'sun':
       return <LightModeIcon {...props} />;
 
     default:

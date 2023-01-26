@@ -1,4 +1,4 @@
-import styled, { useTheme } from "styled-components";
+import styled, { useTheme } from 'styled-components';
 import {
   Control,
   Controller,
@@ -6,9 +6,9 @@ import {
   FieldValues,
   FieldError,
   //   UseControllerProps,
-} from "react-hook-form";
+} from 'react-hook-form';
 
-import { Image, Text } from "../../LV1";
+import { Image, Text } from '../../LV1';
 
 interface Props<T extends FieldValues> {
   // errors: FieldError | undefined;
@@ -31,17 +31,17 @@ const InputText = <T extends FieldValues>(props: Props<T>) => {
   const theme = useTheme();
 
   return (
-    <div className="flex flex-col gap-1">
+    <div className='flex flex-col gap-1'>
       <LabelStyled htmlFor={props.name}>{props.label}</LabelStyled>
       <Controller
         name={props.name}
         control={props.control}
         render={({ field }) => (
           <>
-            <div className="relative">
+            <div className='relative'>
               <InputStyled
                 {...field}
-                type={props.type ? props.type : "text"}
+                type={props.type ? props.type : 'text'}
                 id={props.name}
                 placeholder={props.placeholder}
                 disabled={props.disabled}
@@ -49,7 +49,7 @@ const InputText = <T extends FieldValues>(props: Props<T>) => {
               {props.password && (
                 <EyeIconStyled onClick={props.onClick}>
                   <Image
-                    iconType={props.showPass ? "openEye" : "closeEye"}
+                    iconType={props.showPass ? 'openEye' : 'closeEye'}
                     width={23}
                     height={23}
                     color={theme.colors.neutral400}

@@ -1,6 +1,6 @@
-import * as yup from "yup";
+import * as yup from 'yup';
 
-import AuthForm from "./AuthForm";
+import AuthForm from './AuthForm';
 
 const loginValidation = yup
   .object()
@@ -13,7 +13,7 @@ const loginValidation = yup
 const Login = () => {
   return (
     <section>
-      <AuthForm type="login" validation={loginValidation} />
+      <AuthForm type='login' validation={loginValidation} />
     </section>
   );
 };
